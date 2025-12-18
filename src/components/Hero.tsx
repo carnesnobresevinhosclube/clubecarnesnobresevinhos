@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import heroImage from "@/assets/hero-meat.jpg";
+const heroImage = "/logo-carnes-nobres-e-vinhos-2024-boutique-bg.png";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
