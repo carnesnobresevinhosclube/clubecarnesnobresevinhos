@@ -7,9 +7,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4 text-gradient-gold">
-              Carnes Nobres & Vinhos
-            </h3>
+            <img
+              src="/logo-carnes-nobres-e-vinhos-2024-boutique-amarelo-800x178.png"
+              alt="Carnes Nobres & Vinhos — Boutique"
+              className="h-12 md:h-16 w-auto mb-4 object-contain"
+            />
             <p className="text-muted-foreground mb-6 max-w-md">
               Clube exclusivo de carnes premium e vinhos selecionados. 
               Transformando cada refeição em uma experiência gastronômica única.
