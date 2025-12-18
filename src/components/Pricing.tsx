@@ -16,6 +16,19 @@ const plans = [
     highlighted: false,
   },
   {
+    name: "Prime",
+    price: "449",
+    description: "Para quem busca variedade e sofisticação mensal.",
+    features: [
+      "Seleção de cortes premium variados",
+      "2 rótulos harmonizados",
+      "Conteúdos e brindes selecionados",
+      "Prioridade em disponibilidade limitada",
+    ],
+    highlighted: false,
+    badge: "Equilíbrio perfeito",
+  },
+  {
     name: "Experiência Suprema",
     price: "749",
     description: "Para quem transforma encontros em memória.",

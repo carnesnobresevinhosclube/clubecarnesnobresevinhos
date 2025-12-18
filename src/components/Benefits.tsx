@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Wine, Truck, Gift, ChefHat, ShieldCheck } from "lucide-react";
+import { Wine, Truck, Gift, ChefHat, ShieldCheck, Thermometer } from "lucide-react";
 
 const benefits = [
   {
@@ -31,6 +31,12 @@ const benefits = [
     title: "Autoridade na mesa",
     description:
       "Você serve, explica, harmoniza — e impressiona sem esforço.",
+  },
+  {
+    icon: Thermometer,
+    title: "Entrega refrigerada monitorada",
+    description:
+      "Controle de temperatura ponta a ponta e embalagem térmica homologada.",
   },
 ];
 

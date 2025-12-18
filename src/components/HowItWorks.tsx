@@ -51,32 +51,22 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {steps.map((step, index) => (
             <div
               key={index}
               className="relative animate-fade-in"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              {/* Linha conectora */}
-              {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-1/4 left-full w-full h-0.5 bg-gradient-to-r from-accent/50 to-transparent -z-10" />
-              )}
-
               <div className="relative">
-                {/* Número do passo */}
                 <div className="text-7xl font-bold text-accent/20 mb-4">
                   {step.number}
                 </div>
-
-                {/* Ícone */}
                 <div className="mb-6 relative">
                   <div className="w-32 h-32 mx-auto rounded-2xl bg-gradient-to-br from-card to-card/50 backdrop-blur border border-border/50 flex items-center justify-center p-6 hover-lift">
                     <step.icon className="w-16 h-16 text-accent" aria-hidden="true" />
                   </div>
                 </div>
-
-                {/* Conteúdo */}
                 <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">
                   {step.description}
