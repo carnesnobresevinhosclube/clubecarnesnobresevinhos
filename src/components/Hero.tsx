@@ -18,16 +18,18 @@ const Hero = () => {
       </div>
 
       {/* Conteúdo */}
-      <div className="container relative z-10 px-4 py-20">
-        <div className="max-w-3xl animate-fade-in">
+  <div className="container relative z-10 px-4 py-20">
+    <div className="max-w-3xl animate-fade-in">
           <div className="mb-6">
-            <span className="inline-block px-4 py-2 bg-accent/10 border border-accent/30 rounded-full text-accent font-semibold text-sm uppercase tracking-wider">
-              Clube Privado
-            </span>
+            <img
+              src="/logo-carnes-nobres-e-vinhos-clube.png"
+              alt="Carnes Nobres & Vinhos — Clube"
+              className="h-10 md:h-12 w-auto object-contain"
+            />
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            O clube privado de carnes nobres e vinhos para quem exige o melhor — todos os meses.
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            O <span className="font-extrabold text-accent">clube privado</span> de carnes nobres e vinhos para quem exige o melhor, <span className="font-extrabold text-accent">todos os meses</span>.
           </h1>
 
           <p className="text-xl md:text-2xl text-muted-foreground mb-6 leading-relaxed">
