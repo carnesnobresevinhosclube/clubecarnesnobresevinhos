@@ -105,12 +105,23 @@ All colors MUST be HSL.
     will-change: transform;
   }
 
+  .animate-marquee-2 {
+    animation: marquee2 var(--duration) linear infinite;
+    will-change: transform;
+  }
+
   @keyframes marquee {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  @keyframes marquee2 {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(0); }
   }
 }
 
+@layer utilities {
   .slash-effect {
     position: absolute;
     height: 4px;

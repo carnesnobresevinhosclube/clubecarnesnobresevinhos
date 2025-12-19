@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { TestimonialCard, TestimonialAuthor } from "@/components/ui/testimonial-card";
 
@@ -18,6 +19,34 @@ export function TestimonialsSection({
   testimonials,
   className,
 }: TestimonialsSectionProps) {
+  const duplicated = [...testimonials, ...testimonials];
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef(0);
+  const scrollStartX = useRef(0);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let frame: number;
+    const speed = 0.6;
+
+    const loop = () => {
+      if (!isHovered && !isDragging) {
+        container.scrollLeft += speed;
+        const maxScroll = container.scrollWidth / 2;
+        if (container.scrollLeft >= maxScroll) {
+          container.scrollLeft -= maxScroll;
+        }
+      }
+      frame = requestAnimationFrame(loop);
+    };
+
+    frame = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(frame);
+  }, [isHovered, isDragging]);
   return (
     <section
       className={cn(
@@ -36,13 +65,43 @@ export function TestimonialsSection({
           </p>
         </div>
 
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <div className="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row [--duration:40s]">
-            <div className="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row group-hover:[animation-play-state:paused]">
-              {[...Array(4)].map((_, setIndex) => (
-                testimonials.map((testimonial, i) => (
-                  <TestimonialCard key={`${setIndex}-${i}`} {...testimonial} />
-                ))
+        <div className="relative w-full overflow-hidden">
+          <div
+            ref={containerRef}
+            className="group relative flex w-full overflow-hidden cursor-grab active:cursor-grabbing [--gap:1.5rem]"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => {
+              setIsHovered(false);
+              setIsDragging(false);
+            }}
+            onMouseDown={(e) => {
+              const container = containerRef.current;
+              if (!container) return;
+              setIsDragging(true);
+              dragStartX.current = e.clientX;
+              scrollStartX.current = container.scrollLeft;
+            }}
+            onMouseMove={(e) => {
+              if (!isDragging) return;
+              const container = containerRef.current;
+              if (!container) return;
+              e.preventDefault();
+              const delta = e.clientX - dragStartX.current;
+              container.scrollLeft = scrollStartX.current - delta;
+              const maxScroll = container.scrollWidth / 2;
+              if (container.scrollLeft < 0) {
+                container.scrollLeft += maxScroll;
+                scrollStartX.current += maxScroll;
+              } else if (container.scrollLeft >= maxScroll) {
+                container.scrollLeft -= maxScroll;
+                scrollStartX.current -= maxScroll;
+              }
+            }}
+            onMouseUp={() => setIsDragging(false)}
+          >
+            <div className="flex w-max [gap:var(--gap)] px-2 py-2">
+              {duplicated.map((testimonial, i) => (
+                <TestimonialCard key={`t-${i}`} {...testimonial} />
               ))}
             </div>
           </div>
@@ -54,4 +113,3 @@ export function TestimonialsSection({
     </section>
   );
 }
-

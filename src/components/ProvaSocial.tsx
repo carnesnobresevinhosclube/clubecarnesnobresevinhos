@@ -2,40 +2,94 @@ import { TestimonialsSection } from "@/components/TestimonialsSection";
 
 const testimonials = [
   {
-    author: { name: "Marcos Almeida", title: "Assinante desde 2023" },
+    author: { 
+      name: "Marcos Almeida", 
+      handle: "marcosalmeida", 
+      title: "Assinante desde 2023", 
+      avatarUrl: "/avatar-carnes-nobres-e-vinhos-03.png" 
+    },
     text: "A seleção chega e você percebe que alguém realmente pensou por você.",
+    rating: 5,
   },
   {
-    author: { name: "Patrícia Nogueira", title: "Sommelier amadora" },
+    author: {
+      name: "Patrícia Nogueira",
+      handle: "patricianogueira",
+      title: "Sommelier amadora",
+      avatarUrl: "/avatar-carnes-nobres-e-vinhos-02.png",
+    },
     text: "Nunca mais errei vinho com carne.",
+    rating: 5,
   },
   {
-    author: { name: "Rafael Santos", title: "Churrasqueiro de fim de semana" },
+    author: { 
+      name: "Rafael Santos", 
+      handle: "rafaelsantos", 
+      title: "Churrasqueiro de fim de semana", 
+      avatarUrl: "/avatar-carnes-nobres-e-vinhos-04.png" 
+    },
     text: "Virou ritual aqui em casa.",
+    rating: 5,
   },
   {
-    author: { name: "Bruna Carvalho", title: "Casal anfitrião" },
+    author: { 
+      name: "Bruna Carvalho", 
+      handle: "brunacarvalho", 
+      title: "Casal anfitrião", 
+      avatarUrl: "/avatar-carnes-nobres-e-vinhos-05.png" 
+    },
     text: "Qualidade constante. A confiança não tem preço.",
+    rating: 5,
   },
   {
-    author: { name: "Eduardo Lima", title: "Amante de dry aged" },
+    author: { 
+      name: "Eduardo Lima", 
+      handle: "eduardolima", 
+      title: "Amante de dry aged", 
+      avatarUrl: "/avatar-carnes-nobres-e-vinhos-06.png" 
+    },
     text: "Os cortes chegam perfeitos. Textura e sabor acima da média.",
+    rating: 5,
   },
   {
-    author: { name: "Fernanda Rocha", title: "Clube há 6 meses" },
+    author: { 
+      name: "Fernanda Rocha", 
+      handle: "fernandarocha", 
+      title: "Clube há 6 meses", 
+      avatarUrl: "/avatar-carnes-nobres-e-vinhos-01.png" 
+    },
     text: "Economizei tempo e acertei mais. Zero ansiedade na escolha.",
+    rating: 5,
   },
   {
-    author: { name: "Gustavo Barros", title: "Pai de dois" },
+    author: { 
+      name: "Gustavo Barros", 
+      handle: "gustavobarros", 
+      title: "Pai de dois", 
+      avatarUrl: "/avatar-carnes-nobres-e-vinhos-07.png" 
+    },
     text: "Transforma um jantar comum em momento especial.",
+    rating: 5,
   },
   {
-    author: { name: "Bianca Silva", title: "Recebe amigos toda semana" },
+    author: { 
+      name: "Bianca Silva", 
+      handle: "biancasilva", 
+      title: "Recebe amigos toda semana", 
+      avatarUrl: "/avatar-carnes-nobres-e-vinhos-08.png" 
+    },
     text: "Curadoria impecável. Os convidados sempre perguntam onde comprei.",
+    rating: 5,
   },
   {
-    author: { name: "João Pedro", title: "Aprendiz de parrilla" },
+    author: { 
+      name: "João Pedro", 
+      handle: "joaopedro", 
+      title: "Aprendiz de parrilla", 
+      avatarUrl: "/avatar-carnes-nobres-e-vinhos-09.png" 
+    },
     text: "Combinações de vinho são certeiras. Aprendi muito com o clube.",
+    rating: 5,
   },
 ];
 
