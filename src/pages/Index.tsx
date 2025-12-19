@@ -8,6 +8,7 @@ import ProvaSocial from "@/components/ProvaSocial";
 import ParaQuem from "@/components/ParaQuem";
 import FAQ from "@/components/FAQ";
 import CTAFinal from "@/components/CTAFinal";
+import PaymentSecurity from "@/components/PaymentSecurity";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
       <ParaQuem />
       <FAQ />
       <CTAFinal />
+      <PaymentSecurity />
       <Footer />
     </div>
   );
