@@ -1,14 +1,57 @@
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import { useRef, useState } from "react";
+import { GiKitchenKnives } from "react-icons/gi";
 const heroImage = "/logo-carnes-nobres-e-vinhos-2024-boutique-bg.png";
+
+// cursor: faca (react-icons)
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const [cursorVisible, setCursorVisible] = useState(false);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [slashes, setSlashes] = useState<Array<{ id: number; x: number; y: number; rot: number; w: number }>>([]);
+  const moveCount = useRef(0);
+
+  const handleMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setCursorPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    moveCount.current += 1;
+    if (moveCount.current % 3 === 0) {
+      const rot = Math.random() > 0.5 ? -30 : 30;
+      const w = 260 + Math.round(Math.random() * 160);
+      const id = Date.now() + Math.random();
+      setSlashes((prev) => [...prev, { id, x: e.clientX - rect.left, y: e.clientY - rect.top, rot, w }]);
+      setTimeout(() => {
+        setSlashes((prev) => prev.filter((s) => s.id !== id));
+      }, 300);
+    }
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const rot = Math.random() > 0.5 ? -35 : 35;
+    const w = 220 + Math.round(Math.random() * 80);
+    const id = Date.now() + Math.random();
+    setSlashes((prev) => [...prev, { id, x, y, rot, w }]);
+    setTimeout(() => {
+      setSlashes((prev) => prev.filter((s) => s.id !== id));
+    }, 300);
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden cursor-none"
+      onMouseMove={handleMove}
+      onMouseEnter={() => setCursorVisible(true)}
+      onMouseLeave={() => setCursorVisible(false)}
+      onClick={handleClick}
+    >
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
@@ -60,7 +103,7 @@ const Hero = () => {
               variant="gold" 
               size="lg"
               onClick={() => scrollToSection("planos")}
-              className="text-lg px-8 py-6 h-auto"
+              className="text-lg px-8 py-6 h-auto transition-colors hover:bg-none hover:bg-black hover:text-accent hover:border-black"
             >
               Quero fazer parte do clube
             </Button>
@@ -68,7 +111,7 @@ const Hero = () => {
               variant="outline" 
               size="lg"
               onClick={() => scrollToSection("como-funciona")}
-              className="text-lg px-8 py-6 h-auto border-accent/30 hover:bg-accent/10"
+              className="text-lg px-8 py-6 h-auto border-accent/30 hover:bg-accent/10 hover:!text-black"
             >
               Como Funciona
             </Button>
@@ -76,6 +119,20 @@ const Hero = () => {
         </div>
       </div>
 
+      {cursorVisible && (
+        <GiKitchenKnives
+          size={56}
+          className="absolute z-30 text-accent"
+          style={{ left: cursorPos.x, top: cursorPos.y, transform: "translate(-50%, -50%) rotate(190deg)", filter: "drop-shadow(0 2px 2px rgba(0,0,0,.5))", pointerEvents: "none" }}
+        />
+      )}
+      {slashes.map((s) => (
+        <span
+          key={s.id}
+          className="slash-effect z-20"
+          style={{ left: s.x, top: s.y, width: `${s.w}px`, transform: `translate(-50%, -50%) rotate(${s.rot}deg)` }}
+        />
+      ))}
       {/* Indicador de scroll */}
       <button 
         onClick={() => scrollToSection("beneficios")}

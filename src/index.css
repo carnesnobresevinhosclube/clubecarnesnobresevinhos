@@ -89,6 +89,34 @@ All colors MUST be HSL.
   .hover-lift {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
   }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .slash-effect {
+    position: absolute;
+    height: 4px;
+    width: 260px;
+    border-radius: 9999px;
+    background: linear-gradient(to right, transparent, hsl(var(--accent)), transparent);
+    box-shadow: 0 0 28px hsl(var(--accent) / 0.5);
+    opacity: 0;
+    animation: slashOpacity 300ms ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes slashOpacity {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    100% { opacity: 0; }
+  }
 }
 
 @layer base {
